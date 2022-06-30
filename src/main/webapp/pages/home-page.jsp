@@ -23,8 +23,8 @@
                             <td><c:out value="${customer.lastName}"/></td>
                             <td><c:out value="${customer.email}"/></td>
                             <td>
-                                <a href="/customers/updateCustomer?email=${customer.email}">Update</a> |
-                                <a href="/customers/deleteCustomer?email=${customer.email}"
+                                <a href="/customers/updateCustomer?id=${customer.id}">Update</a> |
+                                <a href="/customers/deleteCustomer?id=${customer.id}"
                                    onclick="if(!(confirm('Are you sure you want to delete?'))) return false">Delete</a>
                             </td>
                         </tr>

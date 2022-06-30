@@ -35,9 +35,9 @@ public class CustomerServiceImplementation implements CustomerService {
     }
 
     @Transactional
-    public Customer findByEmail(String email) {
+    public Customer findById(int id) {
         Transaction transaction = session.beginTransaction();
-        Customer customer = session.get(Customer.class, email);
+        Customer customer = session.get(Customer.class, id);
         transaction.commit();
         return customer;
     }
@@ -51,9 +51,9 @@ public class CustomerServiceImplementation implements CustomerService {
     }
 
     @Transactional
-    public void deleteByEmail(String email) {
+    public void deleteById(int id) {
         Transaction transaction = session.beginTransaction();
-        Customer customer = session.get(Customer.class, email);
+        Customer customer = session.get(Customer.class, id);
         session.delete(customer);
         System.out.println("Deleted Customer from Database: " + customer);
         transaction.commit();

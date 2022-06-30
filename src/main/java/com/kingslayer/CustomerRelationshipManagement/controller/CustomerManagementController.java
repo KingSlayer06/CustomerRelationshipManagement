@@ -5,7 +5,6 @@ import com.kingslayer.CustomerRelationshipManagement.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -38,25 +37,26 @@ public class CustomerManagementController {
     }
 
     @RequestMapping("/updateCustomer")
-    public String updateCustomer(@RequestParam("email") String email, Model model) {
-        Customer customer = customerService.findByEmail(email);
+    public String updateCustomer(@RequestParam("id") int id, Model model) {
+        Customer customer = customerService.findById(id);
         model.addAttribute("Customer", customer);
         return "customer-form";
     }
 
     @RequestMapping("/deleteCustomer")
-    public String deleteCustomer(@RequestParam("email") String email) {
-        customerService.deleteByEmail(email);
+    public String deleteCustomer(@RequestParam("id") int id) {
+        customerService.deleteById(id);
         return "redirect:/customers/home";
     }
 
     @RequestMapping ("/saveCustomer")
-    public String saveCustomer(Model model, @RequestParam("email") String email,
+    public String saveCustomer(Model model, @RequestParam("id") int id,
+                               @RequestParam("email") String email,
                               @RequestParam("firstName") String firstName,
                               @RequestParam("lastName") String lastName) {
         Customer customer;
-        if (customerService.findByEmail(email) != null) {
-            customer = customerService.findByEmail(email);
+        if (id != 0) {
+            customer = customerService.findById(id);
             customer.setFirstName(firstName);
             customer.setLastName(lastName);
             customer.setEmail(email);

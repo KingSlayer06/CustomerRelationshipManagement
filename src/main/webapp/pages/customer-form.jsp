@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
     <head>
@@ -7,7 +7,8 @@
     <body>
         <h1>Customer Relationship Management</h1>
         <h3>Save Customer</h3>
-        <form action="saveCustomer" method="post">
+        <form action="/customers/saveCustomer" method="post">
+            <input type="hidden" name="id" value="${Customer.id}"/>
             <table>
                 <tbody>
                 <tr>

@@ -7,9 +7,9 @@ import java.util.List;
 public interface CustomerService {
     public List<Customer> findAll();
 
-    public Customer findByEmail(String email);
+    public Customer findById(int id);
 
     public void saveOrUpdate(Customer customer);
 
-    public void deleteByEmail(String email);
+    public void deleteById(int id);
 }
